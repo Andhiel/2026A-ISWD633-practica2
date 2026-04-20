@@ -1,6 +1,7 @@
 # Variables de Entorno
 ### ¿Qué son las variables de entorno?
 # COMPLETAR
+Las variables de entorno son valores definidos en el sistema operativo que influyen en cómo se ejecutan los procesos y programas. Funcionan como un conjunto de pares nombre = valor que el sistema y las aplicaciones pueden consultar para saber configuraciones específicas.
 
 ### Para crear un contenedor con variables de entorno
 
@@ -12,16 +13,33 @@ docker run -d --name <nombre contenedor> -e <nombre variable1>=<valor1> -e <nomb
 
 # COMPLETAR
 
+docker run -d --name srv-web-config -e username=admin_user -e role=admin nginx:alpine
+
 # CAPTURA CON LA COMPROBACIÓN DE LA CREACIÓN DE LAS VARIABLES DE ENTORNO DEL CONTENEDOR ANTERIOR
+
+![alt text](image.png)
 
 ### Crear un contenedor con la imagen de mysql, mapear todos los puertos
 # COMPLETAR
-
 ### ¿El contenedor se está ejecutando?
 # COMPLETAR
 
+no, se presentan algunos errores.
+
+![alt text](image-1.png)
+
 ### Identificar el problema
 # COMPLETAR
+
+Puesto que se necesitan credenciales para poder acceder adecuadamente.
+
+MYSQL_ROOT_PASSWORD 
+
+este es el comando que nos permite asignar la contraseña root de mysql.
+
+![alt text](image-2.png)
+
+![alt text](image-3.png)
 
 ### Para crear un contenedor con variables de entorno especificadas
 - Portabilidad: Las aplicaciones se vuelven más portátiles y pueden ser desplegadas en diferentes entornos (desarrollo, pruebas, producción) simplemente cambiando el archivo de variables de entorno.
@@ -31,4 +49,8 @@ docker run -d --name <nombre contenedor> -e <nombre variable1>=<valor1> -e <nomb
 - Control de Acceso: Los archivos de variables de entorno pueden ser gestionados con permisos específicos, limitando quién puede ver o modificar la configuración sensible.
 
 ### ¿Qué bases de datos existen en el contenedor creado?
+
+docker exec -it <nombre_contenedor> mysql -u root -p
+
 # COMPLETAR
+![alt text](image-5.png)

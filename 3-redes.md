@@ -3,7 +3,7 @@
 Las redes son un componente fundamental que permite la comunicación entre contenedores, así como la comunicación de los contenedores con el mundo exterior.
 
 
-!\[Imagen](redes.PNG)
+![Imagen](redes.PNG)
 
 * Bridge: Esta es la red por defecto en Docker. Permite la comunicación entre contenedores en el mismo host. Cada contenedor conectado a la red bridge tiene una IP propia en la subred de la red bridge.
 
@@ -17,12 +17,14 @@ Las redes son un componente fundamental que permite la comunicación entre conte
 ```
 docker network create <nombre red> -d bridge
 ```
+![alt text](image-11.png)
 
 ### Crear un contenedor vinculado a una red
 
 ```
 docker run -d --name <nombre contenedor> --network <nombre red> <nombre imagen>
 ```
+![alt text](image-13.png)
 
 ### Para saber a qué red está conectado un contenedor
 
@@ -35,6 +37,7 @@ docker inspect <nombre contenedor>
 ```
 docker network inspect <nombre red> 
 ```
+![alt text](image-14.png)
 
 ### Vincular contenedor a una red
 
@@ -56,11 +59,21 @@ docker network ls
 
 ### Crear los contenedores y las redes que se presentan en el esquema. Usar para todos los contenedores la imagen de nginx:alpine
 
-!\[Imagen](esquema-ejercicio-redes.PNG)
+![Imagen](esquema-ejercicio-redes.PNG)
 
 # COLOCAR UNA CAPTURA DE LAS REDES EXISTENTES CREADAS
 
+![alt text](image-15.png)
+
 # COLOCAR UNA(S) CAPTURAS(S) DE LOS CONTENEDORES CREADOS EN DONDE SE EVIDENCIE A QUÉ RED ESTÁN VINCULADOS
+
+para saber a qué red está conectado un contenedor: debemos usar el comando `docker inspect <nombre contenedor>` o `docker network inspect <nombre red>` y en la linea que dice "Networks" veremos las redes a las que está conectado el contenedor.
+para conectar un contenedor a dos redes usamos el comando `docker network connect <nombre red> <nombre contenedor>` para conectarlos directamente desde la creacion el comando es `docker run -d --name <nombre contenedor> --network <nombre red1> --network <nombre red2> <nombre imagen>`:
+![alt text](image-16.png)
+
+![alt text](image-17.png)
+
+![alt text](image-18.png)
 
 ### Para eliminar las redes creadas
 
